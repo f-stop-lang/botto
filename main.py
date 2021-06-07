@@ -3,17 +3,19 @@ from discord.ext import commands
 
 
 class FStopBot(commands.Bot):
-    def __init__(self):
+    
+    def __init__(self) -> None:
+        intents = discord.Intents.default()
+        intens.members = True
+        
         super().__init__(
-            command_prefix='?',
-            intents=discord.Intents.all(),
-            description='A bot for the f-stop Discord server.'
+            command_prefix=commands.when_mentioned_or('?', '!'),
+            intents=intents,
+            description='A bot for the f-stop Discord server.', 
+            case_insensitive=True,
+            color=0x2F3136,
         )
         
-    def run(self):
-        super().run('komodo put your token here')
-    
-    
  if __name__ == '__main__':
     botto = FStopBot()
-    botto.run()
+    botto.run('token')
